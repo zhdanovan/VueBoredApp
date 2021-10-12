@@ -12,10 +12,14 @@ export default {
       { text: "Благотворительность", value: "charity" },
       { text: "Развлечение", value: "recreational" },
     ],
+    isLoading: false,
   },
   mutations: {
     updateAct(state, acts) {
       state.acts = acts;
+    },
+    updateLoading(state, isLoading) {
+      state.isLoading = isLoading;
     },
   },
   getters: {
@@ -25,15 +29,21 @@ export default {
     getOption(state) {
       return state.options;
     },
+    getLoading(state) {
+      return state.isLoading;
+    },
   },
   actions: {
     async fetchActivity(context, query) {
+      context.commit("updateLoading", true);
+
       const res = await fetch(
         `http://www.boredapi.com/api/activity?type=${query}`
       );
       const acts = await res.json();
       console.log(acts);
       context.commit("updateAct", acts);
+      context.commit("updateLoading", false);
     },
   },
 };

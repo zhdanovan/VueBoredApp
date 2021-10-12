@@ -2,12 +2,22 @@
   <div id="app">
     <div class="act">
       <h2>{{ getDataActs }}</h2>
-      <button @click="fetchATC">Refresh</button>
-      <select v-model="value">
-        <option v-for="option in getDataOptions" :key="option.text">
+      <el-button
+        class="bth"
+        type="primary"
+        :loading="getDataLoading"
+        @click="fetchATC"
+        >I am bored</el-button
+      >
+      <el-select v-model="value">
+        <el-option
+          v-for="option in getDataOptions"
+          :key="option.text"
+          :value="option.value"
+        >
           {{ option.value }}
-        </option>
-      </select>
+        </el-option>
+      </el-select>
     </div>
   </div>
 </template>
@@ -30,13 +40,15 @@ export default {
     getDataOptions() {
       return this.$store.getters.getOption;
     },
+    getDataLoading() {
+      return this.$store.getters.getLoading;
+    },
   },
   async mounted() {
     this.$store.dispatch("fetchActivity");
   },
   methods: {
     fetchATC() {
-      console.log(this.value);
       return this.$store.dispatch("fetchActivity", this.value);
     },
   },
