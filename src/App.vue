@@ -2,13 +2,11 @@
   <div id="app">
     <div class="act">
       <h2>{{ getDataActs }}</h2>
-      <el-button
-        class="bth"
-        type="primary"
-        :loading="getDataLoading"
-        @click="fetchATC"
-        >I am bored</el-button
-      >
+      <div class="btn">
+        <el-button type="primary" :loading="getDataLoading" @click="fetchATC"
+          >I am bored</el-button
+        >
+      </div>
       <el-select v-model="value">
         <el-option
           v-for="option in getDataOptions"
@@ -62,6 +60,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  margin: 10%;
 }
 </style>
