@@ -1,6 +1,7 @@
 # VueBoredApp
 
 ## При разработки приложения были использованы следующие технологии:
+
  ### :small_blue_diamond: Vue.js
  ### :small_blue_diamond: Vuex
  ### :small_blue_diamond: Element Plus
