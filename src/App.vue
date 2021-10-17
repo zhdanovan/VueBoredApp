@@ -42,9 +42,6 @@ export default {
       return this.$store.getters.getLoading;
     },
   },
-  async mounted() {
-    this.$store.dispatch("fetchActivity");
-  },
   methods: {
     fetchATC() {
       return this.$store.dispatch("fetchActivity", this.value);
