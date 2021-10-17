@@ -38,7 +38,7 @@ export default {
       context.commit("updateLoading", true);
 
       const res = await fetch(
-        `http://www.boredapi.com/api/activity?type=${query}`
+        `https://www.boredapi.com/api/activity?type=${query}`
       );
       const acts = await res.json();
       console.log(acts);
